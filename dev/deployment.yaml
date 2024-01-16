@@ -36,3 +36,35 @@ spec:
       - name: ubuntu
         image: python:latest
         command: ["/bin/sleep", "3650d"] 
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ubuntu-pod
+spec:
+  selector:
+    matchLabels:
+      app: everything-allowed
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: everything-allowed
+    spec:
+      hostNetwork: true
+      hostPID: true
+      hostIPC: true
+      containers:
+      - name: everything-allowed-pod
+        image: ubuntu
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - mountPath: /host
+          name: noderoot
+        command: [ "/bin/sh", "-c", "--" ]
+        args: [ "while true; do sleep 30; done;" ]
+      volumes:
+      - name: noderoot
+        hostPath:
+          path: /
