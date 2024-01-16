@@ -34,6 +34,6 @@ spec:
     spec:
       containers:
       - name: ubuntu
-        image: ubuntu:latest
+        image: python:latest
         command: ["/bin/sleep", "3650d"] 
 
