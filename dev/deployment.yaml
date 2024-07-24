@@ -18,3 +18,10 @@ spec:
         ports:
         - containerPort: 8080
         command: ["/bin/sleep", "3651d"]
+        securityContext:
+          runAsUser: 33
+          runAsGroup: 33
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+              - ALL
