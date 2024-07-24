@@ -19,9 +19,16 @@ spec:
         - containerPort: 8080
         command: ["/bin/sleep", "3651d"]
         securityContext:
-          runAsUser: 33
-          runAsGroup: 33
+          runAsUser: 33 # UID for www-data
+          runAsGroup: 33 # GID for www-data
           allowPrivilegeEscalation: false
-          capabilities:
-            drop:
-              - ALL
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "useradd -m www-data; chown -R www-data:www-data /home/www-data"]
+        volumeMounts:
+        - name: www-data-home
+          mountPath: /home/www-data
+      volumes:
+      - name: www-data-home
+        emptyDir: {}
