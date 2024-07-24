@@ -26,9 +26,3 @@ spec:
           postStart:
             exec:
               command: ["/bin/sh", "-c", "useradd -m www-data; chown -R www-data:www-data /home/www-data"]
-        volumeMounts:
-        - name: www-data-home
-          mountPath: /home/www-data
-      volumes:
-      - name: www-data-home
-        emptyDir: {}
