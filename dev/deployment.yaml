@@ -14,15 +14,11 @@ spec:
     spec:
       containers:
       - name: this-pod
-        image: ubuntu@sha256:25895062172a2f39ae36da530f3db244b507d7ffb1c4dd42a3a487b5b446e996
+        image: ubuntu:latest
         ports:
         - containerPort: 8080
-        command: ["/bin/sleep", "3651d"]
+        command: ["/bin/bash", "-c", "sleep 3651d"]
         securityContext:
-          runAsUser: 33
-          runAsGroup: 33
+          runAsUser: 33 # UID for www-data
+          runAsGroup: 33 # GID for www-data
           allowPrivilegeEscalation: false
-        lifecycle:
-          postStart:
-            exec:
-              command: ["/bin/sh", "-c", "mkdir /home/www-data; useradd -m www-data; chown -R www-data:www-data /home/www-data"]
