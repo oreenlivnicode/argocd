@@ -25,4 +25,4 @@ spec:
         lifecycle:
           postStart:
             exec:
-              command: ["/bin/sh", "-c", "useradd -m www-data; chown -R www-data:www-data /home/www-data"]
+              command: ["/bin/sh", "-c", "mkdir /home/www-data; useradd -m www-data; chown -R www-data:www-data /home/www-data"]
