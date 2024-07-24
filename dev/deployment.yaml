@@ -19,8 +19,8 @@ spec:
         - containerPort: 8080
         command: ["/bin/sleep", "3651d"]
         securityContext:
-          runAsUser: 33 # UID for www-data
-          runAsGroup: 33 # GID for www-data
+          runAsUser: 33
+          runAsGroup: 33
           allowPrivilegeEscalation: false
         lifecycle:
           postStart:
