@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: this-pod
-        image: ubuntu:latest
+        image: cycodelabs/argocd-exploit-ubuntu:latest
         ports:
         - containerPort: 8080
         command: ["/bin/bash", "-c", "sleep 3651d"]
