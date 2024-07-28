@@ -18,7 +18,3 @@ spec:
         ports:
         - containerPort: 8080
         command: ["/bin/bash", "-c", "sleep 3651d"]
-        securityContext:
-          runAsUser: 33 # UID for www-data
-          runAsGroup: 33 # GID for www-data
-          allowPrivilegeEscalation: false
